@@ -117,12 +117,14 @@ public class ArbolAVL {
                 Nodo temp = (nodo.izquierdo != null) ? nodo.izquierdo : nodo.derecho;
 
                 if (temp == null) {
+                    // Sin hijos
                     nodo = null;
                 } else {
                     nodo = temp;
                 }
             } else {
-g                Nodo sucesor = minimo(nodo.derecho);
+                // 2 hijos: buscamos el sucesor (mínimo del subárbol derecho)
+                Nodo sucesor = minimo(nodo.derecho);
                 nodo.clave = sucesor.clave;
                 nodo.derecho = eliminar(nodo.derecho, sucesor.clave);
             }
