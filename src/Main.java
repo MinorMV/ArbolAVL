@@ -23,7 +23,7 @@ public class Main {
                 opcion = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Ingrese un número válido.");
-                sc.nextLine(); // limpiar buffer
+                sc.nextLine(); 
                 continue;
             }
 
@@ -84,6 +84,6 @@ public class Main {
         } while (opcion != 0);
 
         sc.close();
-        
+
     }
 }

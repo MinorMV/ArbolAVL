@@ -1,10 +1,8 @@
-// Clase que contiene la lógica del árbol AVL:
-// buscar, insertar y eliminar, además del recorrido en orden.
 public class ArbolAVL {
 
     private Nodo raiz;
 
-    // ----- Métodos públicos que usará el main -----
+    // Métodos 
 
     public void insertar(int clave) {
         raiz = insertar(raiz, clave);
@@ -28,7 +26,7 @@ public class ArbolAVL {
         }
     }
 
-    // ----- Auxiliares internos -----
+    //  Auxiliares internos
 
     private int altura(Nodo n) {
         return (n == null) ? 0 : n.altura;
@@ -47,7 +45,6 @@ public class ArbolAVL {
 
     // Inserción recursiva con rebalance
     private Nodo insertar(Nodo nodo, int clave) {
-        // Inserción normal de árbol binario de búsqueda
         if (nodo == null) {
             return new Nodo(clave);
         }
@@ -57,7 +54,7 @@ public class ArbolAVL {
         } else if (clave > nodo.clave) {
             nodo.derecho = insertar(nodo.derecho, clave);
         } else {
-            // Clave duplicada: no insertamos nada
+            // Clave duplicada
             return nodo;
         }
 
@@ -109,27 +106,23 @@ public class ArbolAVL {
             return null;
         }
 
-        // Búsqueda del nodo a eliminar
+  
         if (clave < nodo.clave) {
             nodo.izquierdo = eliminar(nodo.izquierdo, clave);
         } else if (clave > nodo.clave) {
             nodo.derecho = eliminar(nodo.derecho, clave);
         } else {
-            // Encontramos el nodo
+ 
             if (nodo.izquierdo == null || nodo.derecho == null) {
-                // 0 o 1 hijo
                 Nodo temp = (nodo.izquierdo != null) ? nodo.izquierdo : nodo.derecho;
 
                 if (temp == null) {
-                    // Sin hijos
                     nodo = null;
                 } else {
-                    // Un hijo: copiar contenido
                     nodo = temp;
                 }
             } else {
-                // 2 hijos: buscamos el sucesor (mínimo del subárbol derecho)
-                Nodo sucesor = minimo(nodo.derecho);
+g                Nodo sucesor = minimo(nodo.derecho);
                 nodo.clave = sucesor.clave;
                 nodo.derecho = eliminar(nodo.derecho, sucesor.clave);
             }
